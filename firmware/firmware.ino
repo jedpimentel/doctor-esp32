@@ -1,4 +1,4 @@
-#define LED_FOO 2
+#define LED_ONBOARD 2
 
 // Motor A
 int motor1Pin1 = 27; 
@@ -17,9 +17,25 @@ const int resolution = 8;
 int dutyCycle1 = 200;
 int dutyCycle2 = 200;
 
+
+void blink() {
+  digitalWrite(LED_ONBOARD, HIGH);
+  delay(100);
+  digitalWrite(LED_ONBOARD, LOW);
+  delay(300);
+  digitalWrite(LED_ONBOARD, HIGH);
+  delay(100);
+  digitalWrite(LED_ONBOARD, LOW);
+  delay(300);
+  digitalWrite(LED_ONBOARD, HIGH);
+  delay(100);
+  digitalWrite(LED_ONBOARD, LOW);
+  delay(300);
+}
+
 void setup() {
   
-  pinMode(LED_FOO, OUTPUT);
+  pinMode(LED_ONBOARD, OUTPUT);
 
 
   // sets the pins as outputs:
@@ -43,12 +59,16 @@ void setup() {
 
   // testing
   Serial.print("Testing DC Motor...");
+
+  blink();
 }
 
 void loop() {
+  blink();
+  
   // Move the DC motor forward at maximum speed
   Serial.println("Moving Forward");
-  digitalWrite(LED_FOO, HIGH);  // turn the LED on (HIGH is the voltage level)
+  digitalWrite(LED_ONBOARD, HIGH);  // turn the LED on (HIGH is the voltage level)
   digitalWrite(motor1Pin1, LOW);
   digitalWrite(motor1Pin2, HIGH); 
   digitalWrite(motor2Pin1, LOW);
@@ -56,7 +76,7 @@ void loop() {
   delay(2000);
 
   // Stop the DC motor
-  digitalWrite(LED_FOO, LOW);   // turn the LED off by making the voltage LOW
+  digitalWrite(LED_ONBOARD, LOW);   // turn the LED off by making the voltage LOW
   Serial.println("Motor stopped");
   digitalWrite(motor1Pin1, LOW);
   digitalWrite(motor1Pin2, LOW);
@@ -81,7 +101,7 @@ void loop() {
   delay(1000);
 
   // Move DC motor forward with increasing speed
-  digitalWrite(LED_FOO, HIGH);  // turn the LED on (HIGH is the voltage level)
+  digitalWrite(LED_ONBOARD, HIGH);  // turn the LED on (HIGH is the voltage level)
   digitalWrite(motor1Pin1, LOW);
   digitalWrite(motor1Pin2, HIGH);
   digitalWrite(motor2Pin1, LOW);
